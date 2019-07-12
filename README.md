@@ -1,4 +1,5 @@
 # Enumerati
+[![CircleCI](https://circleci.com/gh/rupurt/enumerati.svg?style=svg)](https://circleci.com/gh/rupurt/enumerati)
 
 Filter and order an enumerable collection of structs
 
