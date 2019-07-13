@@ -16,10 +16,10 @@ defmodule Enumerati do
   @spec order([struct], list) :: [struct]
   def order(items, sort_by) do
     sort_by
+    |> Enum.reverse()
     |> Enum.reduce(
       items,
-      fn s, acc -> acc |> Enum.sort(&(Map.get(&1, s) >= Map.get(&2, s))) end
+      fn s, acc -> acc |> Enum.sort(&(Map.get(&1, s) <= Map.get(&2, s))) end
     )
-    |> Enum.reverse()
   end
 end
