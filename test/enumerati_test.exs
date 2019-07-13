@@ -20,4 +20,14 @@ defmodule EnumeratiTest do
       assert Enumerati.filter(@people, first_name: "rick", last_name: "james") == [@rick]
     end
   end
+
+  describe ".order" do
+    test "returns items in ascending order of struct properties by default" do
+      assert Enumerati.order(@people, [:first_name, :last_name]) == [
+               @charles,
+               @lebron,
+               @rick
+             ]
+    end
+  end
 end
