@@ -20,6 +20,7 @@ defmodule Enumerati.MixProject do
 
   defp deps do
     [
+      {:decimal, "~> 1.6.0"},
       {:dialyxir, "~> 1.0.0-rc.6", only: :dev, runtime: false},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]

@@ -19,7 +19,17 @@ defmodule Enumerati do
     |> Enum.reverse()
     |> Enum.reduce(
       items,
-      fn s, acc -> acc |> Enum.sort(&(Map.get(&1, s) <= Map.get(&2, s))) end
+      fn s, acc ->
+        acc
+        |> Enum.sort(fn a, b ->
+          av = Map.get(a, s)
+          bv = Map.get(b, s)
+          lte(av, bv)
+        end)
+      end
     )
   end
+
+  defp lte(%Decimal{} = av, %Decimal{} = bv), do: Decimal.cmp(av, bv) != :gt
+  defp lte(av, bv), do: av <= bv
 end

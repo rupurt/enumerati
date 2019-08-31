@@ -34,5 +34,20 @@ defmodule EnumeratiTest do
                @rick_ross
              ]
     end
+
+    test "can order decimals" do
+      product_1 = %Support.Product{name: "Product 1", price: Decimal.new("0.4668")}
+      product_2 = %Support.Product{name: "Product 2", price: Decimal.new("-0.6142")}
+      product_3 = %Support.Product{name: "Product 3", price: Decimal.new("0.6468")}
+      product_4 = %Support.Product{name: "Product 4", price: Decimal.new("-0.7109")}
+      products = [product_1, product_2, product_3, product_4]
+
+      assert Enumerati.order(products, [:price]) == [
+               product_4,
+               product_2,
+               product_1,
+               product_3
+             ]
+    end
   end
 end
