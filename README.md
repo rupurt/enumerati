@@ -1,5 +1,6 @@
 # Enumerati
-[![CircleCI](https://circleci.com/gh/rupurt/enumerati.svg?style=svg)](https://circleci.com/gh/rupurt/enumerati)
+[![Build Status](https://github.com/rupurt/enumerati/workflows/Test/badge.svg?branch=master)](https://github.com/rupurt/enumerati/actions?query=workflow%3ATest)
+[![hex.pm version](https://img.shields.io/hexpm/v/enumerati.svg?style=flat)](https://hex.pm/packages/enumerati)
 
 Filter and order an enumerable collection of structs
 
@@ -7,9 +8,7 @@ Filter and order an enumerable collection of structs
 
 ```elixir
 def deps do
-  [
-    {:enumerati, "~> 0.0.5"}
-  ]
+  [{:enumerati, "~> 0.0.5"}]
 end
 ```
 
