@@ -8,7 +8,7 @@ Filter and order an enumerable collection of structs
 
 ```elixir
 def deps do
-  [{:enumerati, "~> 0.0.5"}]
+  [{:enumerati, "~> 0.0.6"}]
 end
 ```
 
