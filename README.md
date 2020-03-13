@@ -27,11 +27,16 @@ lebron_james = %Person{first_name: "lebron", last_name: "james"}
 charles_barkley = %Person{first_name: "charles", last_name: "barkley"}
 people = [rick_ross, charles_barkley, lebron_james, rick_james]
 
-filtered = Enumerati.filter(people, [last_name: "james"])
+# match and
+and_matches = Enumerati.filter(people, [first_name: "lebron", last_name: "james"])
+Enum.count(and_matches) == 1
+Enum.member?(and_matches, lebron_james) == true
 
-Enum.count(filtered) == 2
-Enum.member?(filtered, rick_james) == true
-Enum.member?(filtered, lebron_james) == true
+# match or
+or_matches = Enumerati.filter(people, [first_name: ["lebron", "charles"]])
+Enum.count(or_matches) == 2
+Enum.member?(or_matches, lebron_james) == true
+Enum.member?(or_matches, charles_barkley) == true
 ```
 
 Order

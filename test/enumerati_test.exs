@@ -9,24 +9,32 @@ defmodule EnumeratiTest do
   @people [@rick_ross, @charles_barkley, @lebron_james, @rick_james]
 
   describe ".filter" do
-    test "returns all items when there are no filters" do
+    test "returns all items when empty" do
       assert Enumerati.filter(@people, []) == @people
     end
 
-    test "can filter by struct properties" do
+    test "by struct attributes" do
       filtered = Enumerati.filter(@people, last_name: "james")
       assert Enum.count(filtered) == 2
       assert Enum.member?(filtered, @rick_james) == true
       assert Enum.member?(filtered, @lebron_james) == true
     end
 
-    test "combines multiple filters with 'and'" do
+    test "matches multiple attribute filters with 'and'" do
       assert Enumerati.filter(@people, first_name: "rick", last_name: "james") == [@rick_james]
+    end
+
+    test "attributes that are lists match with 'or'" do
+      results = Enumerati.filter(@people, first_name: ["lebron", "charles"])
+
+      assert Enum.count(results) == 2
+      assert Enum.member?(results, @lebron_james)
+      assert Enum.member?(results, @charles_barkley)
     end
   end
 
   describe ".order" do
-    test "returns items in ascending order of struct properties by default" do
+    test "returns items in ascending order of struct attributes" do
       assert Enumerati.order(@people, [:last_name, :first_name]) == [
                @charles_barkley,
                @lebron_james,

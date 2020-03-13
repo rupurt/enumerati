@@ -8,7 +8,7 @@ defmodule Enumerati do
     items
     |> Enum.filter(fn item ->
       filters
-      |> Enum.map(fn {k, v} -> Map.fetch!(item, k) == v end)
+      |> Enum.map(&match_attr(&1, item))
       |> Enum.all?()
     end)
   end
@@ -28,6 +28,16 @@ defmodule Enumerati do
         end)
       end
     )
+  end
+
+  defp match_attr({attr, matches}, item) when is_list(matches) do
+    matches
+    |> Enum.map(fn match -> Map.fetch!(item, attr) == match end)
+    |> Enum.any?()
+  end
+
+  defp match_attr({attr, match}, item) do
+    Map.fetch!(item, attr) == match
   end
 
   defp lte(%Decimal{} = av, %Decimal{} = bv), do: Decimal.cmp(av, bv) != :gt
