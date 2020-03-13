@@ -3,7 +3,11 @@ defmodule Enumerati do
   Filter and order an enumerable collection of structs
   """
 
-  @spec filter([struct], list) :: [struct]
+  @type attr_name :: atom
+  @type attr_value :: term
+  @type filters :: [{attr_name, attr_value | [attr_value]}]
+
+  @spec filter([struct], filters) :: [struct]
   def filter(items, filters) do
     items
     |> Enum.filter(fn item ->
@@ -13,7 +17,7 @@ defmodule Enumerati do
     end)
   end
 
-  @spec order([struct], list) :: [struct]
+  @spec order([struct], [attr_name]) :: [struct]
   def order(items, sort_by) do
     sort_by
     |> Enum.reverse()
