@@ -34,6 +34,12 @@ defmodule EnumeratiTest do
   end
 
   describe ".order" do
+    @product_1 %Support.Product{name: "Product 1", price: Decimal.new("0.4668")}
+    @product_2 %Support.Product{name: "Product 2", price: Decimal.new("-0.6142")}
+    @product_3 %Support.Product{name: "Product 3", price: Decimal.new("0.6468")}
+    @product_4 %Support.Product{name: "Product 4", price: Decimal.new("-0.7109")}
+    @products [@product_1, @product_2, @product_3, @product_4]
+
     test "returns items in ascending order of struct attributes" do
       assert Enumerati.order(@people, [:last_name, :first_name]) == [
                @charles_barkley,
@@ -43,18 +49,39 @@ defmodule EnumeratiTest do
              ]
     end
 
-    test "can order decimals" do
-      product_1 = %Support.Product{name: "Product 1", price: Decimal.new("0.4668")}
-      product_2 = %Support.Product{name: "Product 2", price: Decimal.new("-0.6142")}
-      product_3 = %Support.Product{name: "Product 3", price: Decimal.new("0.6468")}
-      product_4 = %Support.Product{name: "Product 4", price: Decimal.new("-0.7109")}
-      products = [product_1, product_2, product_3, product_4]
+    test "can order each attributes ascending" do
+      assert Enumerati.order(@people, [{:last_name, :asc}, {:first_name, :asc}]) == [
+               @charles_barkley,
+               @lebron_james,
+               @rick_james,
+               @rick_ross
+             ]
+    end
 
-      assert Enumerati.order(products, [:price]) == [
-               product_4,
-               product_2,
-               product_1,
-               product_3
+    test "can order each attributes descending" do
+      assert Enumerati.order(@people, [{:last_name, :desc}, {:first_name, :desc}]) == [
+               @rick_ross,
+               @rick_james,
+               @lebron_james,
+               @charles_barkley
+             ]
+    end
+
+    test "can order decimals ascending" do
+      assert Enumerati.order(@products, [:price]) == [
+               @product_4,
+               @product_2,
+               @product_1,
+               @product_3
+             ]
+    end
+
+    test "can order decimals descending" do
+      assert Enumerati.order(@products, [{:price, :desc}]) == [
+               @product_3,
+               @product_1,
+               @product_2,
+               @product_4
              ]
     end
   end

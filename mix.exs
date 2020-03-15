@@ -22,6 +22,8 @@ defmodule Enumerati.MixProject do
     [
       {:decimal, "~> 1.6"},
       {:dialyxir, "~> 1.0.0-rc.7", only: :dev, runtime: false},
+      {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
+      {:ex_unit_notifier, "~> 0.1", only: :test},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end

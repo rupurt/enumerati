@@ -52,10 +52,26 @@ product_3 = %Support.Product{name: "Product 3", price: Decimal.new("0.6468")}
 product_4 = %Support.Product{name: "Product 4", price: Decimal.new("-0.7109")}
 products = [product_1, product_2, product_3, product_4]
 
+# ascending
 Enumerati.order(products, [:price]) == [
  product_4,
  product_2,
  product_1,
  product_3
+]
+
+Enumerati.order(products, [{:price, :asc}]) == [
+ product_4,
+ product_2,
+ product_1,
+ product_3
+]
+
+# descending
+Enumerati.order(products, [{:price, :desc}]) == [
+ product_3
+ product_1,
+ product_2,
+ product_4,
 ]
 ```
