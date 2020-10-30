@@ -51,9 +51,9 @@ defmodule Enumerati do
     end)
   end
 
-  defp lte(%Decimal{} = av, %Decimal{} = bv), do: Decimal.cmp(av, bv) != :gt
+  defp lte(%Decimal{} = av, %Decimal{} = bv), do: Decimal.compare(av, bv) != :gt
   defp lte(av, bv), do: av <= bv
 
-  defp gte(%Decimal{} = av, %Decimal{} = bv), do: Decimal.cmp(av, bv) != :lt
+  defp gte(%Decimal{} = av, %Decimal{} = bv), do: Decimal.compare(av, bv) != :lt
   defp gte(av, bv), do: av >= bv
 end
