@@ -4,7 +4,7 @@ defmodule Enumerati.MixProject do
   def project do
     [
       app: :enumerati,
-      version: "0.0.7",
+      version: "0.0.8",
       elixir: "~> 1.7",
       package: package(),
       description: description(),
