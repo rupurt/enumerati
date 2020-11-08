@@ -20,7 +20,7 @@ defmodule Enumerati.MixProject do
 
   defp deps do
     [
-      {:decimal, "~> 1.6"},
+      {:decimal, "~> 2.0"},
       {:dialyxir, "~> 1.0", only: :dev, runtime: false},
       {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
       {:ex_unit_notifier, "~> 0.1", only: :test},
