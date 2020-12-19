@@ -45,7 +45,7 @@ jobs:
         run: mix test
 
       - name: Dialyzer
-        run: mix dialyzer --halt-exit-status
+        run: mix dialyzer
 
   test-gte-otp-23:
     runs-on: ubuntu-latest
@@ -83,4 +83,4 @@ jobs:
         run: mix test
 
       - name: Dialyzer
-        run: mix dialyzer --halt-exit-status
+        run: mix dialyzer
