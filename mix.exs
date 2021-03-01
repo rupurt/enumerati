@@ -5,7 +5,7 @@ defmodule Enumerati.MixProject do
     [
       app: :enumerati,
       version: "0.0.8",
-      elixir: "~> 1.7",
+      elixir: "~> 1.8",
       package: package(),
       description: description(),
       start_permanent: Mix.env() == :prod,
